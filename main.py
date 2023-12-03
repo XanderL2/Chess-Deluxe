@@ -1,30 +1,20 @@
-import os, pygame, sys;
-os.system('cls'); #?Para borrar la consola
-
-pygame.init(); #*Inicializa la libreria
-
-
+#?Librerias
+import os, pygame, sys, modules;
+from modules import User_Interface_UI, game_loop_principal, Piezas; 
+os.system('cls'); 
 
 
-#*Crear ventana de juego: 
-""" screen_info = pygame.display.Info()
-screen = pygame.display.set_mode((screen_info.current_w, screen_info.current_h), pygame.FULLSCREEN) """ 
 
-screen = pygame.display.set_mode((1000,800));
+#?Inicalizacion del Juego   
 
-#* Bucle principal
 
-while (True): #*Ejecuta un bucle infinito para que el juego pueda correr
-    for evento in pygame.event.get(): #*Durante cada frame o iteracion comprueba que el usuario no salga.
-        if (evento.type == pygame.QUIT):
-            sys.exit();
-            
-            
-            
-            
-    
-            
-    
-    #*Flujo del Juego
-    
-    pygame.display.flip() #*Actualiza la pantalla durante cada frame o iteracion del bucle
+pygame.init();
+
+user_interface_instance = User_Interface_UI("./Resources/Images/BACKGROUND CHESS.jpg"); 
+
+ajedrez = game_loop_principal(user_interface_instance)
+
+ajedrez.start_game()
+
+
+
