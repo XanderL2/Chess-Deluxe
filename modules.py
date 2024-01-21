@@ -7,7 +7,7 @@ class game_loop_principal:
         self.chess_board = Chess_Board();
     #* Funciones o métodos de la clase
     def start_game(self):
-        # Variables
+        #* Variables
         screen = pygame.display.set_mode((1024, 640))
         fps = pygame.time.Clock()
         background = self.user_interface.load_background()
@@ -16,19 +16,31 @@ class game_loop_principal:
         aumento = True;
         animation = True;
         transition = True;
+        
+        #*Effects:
+        #?Soundtrack
+        pygame.mixer.init();
+        pygame.mixer.music.load("./Resources/Music and effects/SoundtTrack/Undertale_Soundrack.wav");
+        pygame.mixer_music.play(-1);
+
+        
+        
     
         while True:
             for evento in pygame.event.get():
                 if evento.type == pygame.QUIT:
                     sys.exit();
                 elif evento.type == pygame.KEYDOWN:
+                    
                     start_game = True;
 
             #* Flujo Principal
             #?Animaciones de Carga y Dibujado de Tablero
             if start_game:
+                
                 if animation: 
                     efecto += 5
+                    
                     if efecto >= 600:
                         animation = False
                         background = pygame.image.load("./Resources/Images/FONDO.png").convert()
@@ -52,7 +64,7 @@ class game_loop_principal:
                 
                 
                 #?Logica de Movimiento y Gameplay
-
+                
                 
                 
                 
@@ -150,10 +162,10 @@ class Chess_Board:
                     self.tablero_matriz[i][j] = Piezas("Peon", "Blanco", "./Resources/Images/Pieces/Blanco/Peon Blanco.png")
 
                 elif i == 6:
-                    self.tablero_matriz[i][j] = Piezas("Peon", "Blanco", "./Resources/Images/Pieces/Blanco/Peon Blanco.png")
+                    self.tablero_matriz[i][j] = Piezas("Peon", "Negro", "./Resources/Images/Pieces/Negro/Peon Negro.png")
 
-        for fila in self.tablero_matriz:
-            print(fila)
+        """ for fila in self.tablero_matriz:
+            print(fila) """
 
     def dibujar_tablero(self, screen, x, y):
         tam_cuadrado = 63
@@ -166,75 +178,6 @@ class Chess_Board:
                     pos = (x + j * tam_cuadrado, y + i * tam_cuadrado)
                     screen.blit(pygame.image.load(pieza.obtener_imagen()), pos)
 
-    #?Constructor de la clase: 
-    def __init__(self):
-        self.tablero_matriz = (
-        ["", "", "", "", "", "", "",""],
-        ["", "", "", "", "", "", "",""],
-        ["", "", "", "", "", "", "",""],
-        ["", "", "", "", "", "", "",""],
-        ["", "", "", "", "", "", "",""],
-        ["", "", "", "", "", "", "",""],
-        ["", "", "", "", "", "", "",""],
-        ["", "", "", "", "", "", "",""]);
-        
-        
-    def instancias_tablero(self, fila, color):
-        self.tablero_matriz[fila][0] = Piezas("Torre", color, f"./Resources/Images/Pieces/{color}/Torre {color}.png")
-        self.tablero_matriz[fila][1] = Piezas("Caballo", color, f"./Resources/Images/Pieces/{color}/Caballo {color}.png")
-        self.tablero_matriz[fila][2] = Piezas("Alfil", color, f"./Resources/Images/Pieces/{color}/Alfil {color}.png")
-        self.tablero_matriz[fila][3] = Piezas("Reina", color, f"./Resources/Images/Pieces/{color}/Reina {color}.png")
-        self.tablero_matriz[fila][4] = Piezas("Rey", color, f"./Resources/Images/Pieces/{color}/Rey {color}.png")
-        self.tablero_matriz[fila][5] = Piezas("Alfil", color, f"./Resources/Images/Pieces/{color}/Alfil {color}.png")
-        self.tablero_matriz[fila][6] = Piezas("Caballo", color, f"./Resources/Images/Pieces/{color}/Caballo {color}.png")
-        self.tablero_matriz[fila][7] = Piezas("Torre", color, f"./Resources/Images/Pieces/{color}/Torre {color}.png")    
-    
-    
-    def posiciones_iniciales(self):
-        
-        for i in range(len(self.tablero_matriz)):
-            
-            if(i == 0):
-                self.instancias_tablero(i, "Blanco")
-            
-            if(i == 7):
-                self.instancias_tablero(i, "Negro")
-                
-            for j in range(len(self.tablero_matriz[i])):
-                
-                if(i == 1):
-                    self.tablero_matriz[i][j] = Piezas("Peon", "Blanco", "./Resources/Images/Pieces/Blanco/Peon Blanco.png");
-                    
-                elif(i == 6):
-                    self.tablero_matriz[i][j] = Piezas("Peon", "Negro", "./Resources/Images/Pieces/Negro/Peon Negro.png");
-
-
-        """ for fila in self.tablero_matriz:
-            print(fila) """
-    
-    
-    def dibujar_tablero(self, screen, x, y):
-        tam_cuadrado = 63
-
-        for i in range(len(self.tablero_matriz)):
-            for j in range(len(self.tablero_matriz[i])):
-                pieza = self.tablero_matriz[i][j]
-                
-                if isinstance(pieza, Piezas):  
-                    pos = (x + j * tam_cuadrado, y + i * tam_cuadrado) #*Crea una tupla durante cada iteracion:
-                    screen.blit(pygame.image.load(pieza.image_piece), pos)
-
-               
-            
-        
-        
-        
-        
-        
-    
-    
-    
-    
            
 class Piezas:
     def __init__(self, tipo_pieza, color, image_piece):
