@@ -18,3 +18,4 @@ ajedrez = game_loop_principal(user_interface_instance)
 ajedrez.start_game()
 
 
+print("xd");
