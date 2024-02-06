@@ -10,7 +10,7 @@ class User_Interface_UI:
         return pygame.image.load(self.background).convert()
 
     def text(self,screen, palabras, color, size, coordenadas):
-        font_text = pygame.font.Font("../Resources/Fonts/Fresco Stamp.ttf", size)
+        font_text = pygame.font.Font("./Resources/Fonts/Fresco Stamp.ttf", size)
         text = font_text.render(palabras, True, color)
         return screen.blit(text, coordenadas)
 

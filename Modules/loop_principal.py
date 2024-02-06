@@ -1,4 +1,4 @@
-from chess_board import Chess_Board
+from Modules.chess_board import Chess_Board
 import sys, pygame;
 
 
@@ -23,7 +23,7 @@ class game_loop_principal:
         #*Effects:
         #?Soundtrack
         pygame.mixer.init();
-        pygame.mixer.music.load("../Resources/Music and effects/SoundtTrack/Undertale_Soundrack.wav");
+        pygame.mixer.music.load('./Resources/Music_and_effects/SoundtTrack/Undertale_Soundrack.wav');
         pygame.mixer_music.play(-1);
 
         
@@ -46,7 +46,7 @@ class game_loop_principal:
                     
                     if efecto >= 600:
                         animation = False
-                        background = pygame.image.load("../Resources/Images/FONDO.png").convert()
+                        background = pygame.image.load("./Resources/Images/FONDO.png").convert()
                         screen.blit(background, (0, 0));
                 else:
                     efecto -= 10

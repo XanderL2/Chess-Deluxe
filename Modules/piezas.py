@@ -1,4 +1,4 @@
-
+import pygame;
 
 class Piezas:
     def __init__(self, tipo_pieza, color, image_piece):
