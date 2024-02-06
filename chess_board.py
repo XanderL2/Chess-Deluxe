@@ -1,4 +1,4 @@
-from Modules.piezas import Piezas
+from piezas import Piezas
 
 
 import pygame;

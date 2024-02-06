@@ -1,4 +1,4 @@
-from Modules.chess_board import Chess_Board
+from chess_board import Chess_Board
 import sys, pygame;
 
 
@@ -23,7 +23,7 @@ class game_loop_principal:
         #*Effects:
         #?Soundtrack
         pygame.mixer.init();
-        pygame.mixer.music.load('./Resources/Music_and_effects/SoundtTrack');
+        pygame.mixer.music.load('./Resources/Music_and_effects/SoundtTrack/Undertale_Soundrack.wav');
         pygame.mixer_music.play(-1);
 
         
