@@ -1,6 +1,4 @@
-from piezas import Piezas
-
-
+from modules.piezas import Piezas
 import pygame;
 
 
@@ -59,3 +57,4 @@ class Chess_Board:
                 if isinstance(pieza, Piezas):
                     pos = (x + j * tam_cuadrado, y + i * tam_cuadrado)
                     screen.blit(pygame.image.load(pieza.obtener_imagen()), pos)
+
