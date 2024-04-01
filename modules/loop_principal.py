@@ -4,32 +4,22 @@ import sys, pygame;
 
 class game_loop_principal:
 
-    #* Constructor de la clase
+    #* Constructor
     def __init__(self, user_interface):
         self.user_interface = user_interface
         self.chess_board = Chess_Board();
 
     
     
-    def FlashingAnimation (self, max, min, efecto, aumento):
-        if efecto[0] >= max: aumento[0] = False
-        if efecto[0] <= min: aumento[0] = True
-        efecto[0] += 5 if aumento[0] else -5
-
-    def resetValues(self, efecto, aumento):
-        efecto[0] = 0; 
-        aumento[0] = True;
-
-    #* Funciones o métodos de la clase
+    #* Principal Method
     def start_game(self):
 
         #* Variables
         screen = pygame.display.set_mode((1024, 640))
         fps = pygame.time.Clock()
-        background = self.user_interface.load_background()
+        background = self.user_interface.Load_background()
 
         start_game = False;
-
         efecto = [0];
         aumento = [True];
 
@@ -50,6 +40,7 @@ class game_loop_principal:
                     sys.exit();
                 elif evento.type == pygame.KEYDOWN:
                     start_game = True;
+                    self.user_interface.ResetValues(efecto, aumento)                    
                     
 
 
@@ -57,15 +48,18 @@ class game_loop_principal:
             #?Animaciones de Carga y Dibujado de Tablero
             if start_game:
                 
+                
+                
+                self.user_interface.OldAnimation(efecto, aumento)
+                self.user_interface.AnimationCircle(efecto[0], screen)
+        
 
-                self.FlashingAnimation(600, 0, efecto, aumento)
-                self.user_interface.animation_init(efecto[0], screen)
-
-
-                    
-                if(aumento == 0):
+                if(efecto[0] == 0):
                     background = pygame.image.load("./Resources/Images/FONDO.png").convert()
                     screen.blit(background, (0, 0));
+
+                print(efecto[0])
+                                   
 
 
                
@@ -101,9 +95,7 @@ class game_loop_principal:
                 #     self.chess_board.posiciones_iniciales()
                 #     self.chess_board.dibujar_tablero(screen, 83, 33 )
                 
-                
-                
-                # #?Logica de Movimiento y Gameplay
+                #?Logica de Movimiento y Gameplay
                 
                 
                 
@@ -112,9 +104,8 @@ class game_loop_principal:
             else:
                 #Cover
                 screen.blit(background, (0, 0))
-                self.FlashingAnimation(255, 0, efecto, aumento);
-
-                self.user_interface.text(screen, "P U L S A   P A R A   I N I C I A R", (efecto[0], 0, 0), 70, (80, 500))  
+                self.user_interface.FlashingAnimation(255, 0, efecto, aumento);
+                self.user_interface.Text(screen, "P U L S A   P A R A   I N I C I A R", (efecto[0], 0, 0), 70, (80, 500))  
 
 
             fps.tick(60)
