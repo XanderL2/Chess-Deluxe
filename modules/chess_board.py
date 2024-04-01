@@ -3,6 +3,7 @@ import pygame;
 
 
 class Chess_Board:
+
     # Constructor de la clase:
     def __init__(self):
         self.tablero_matriz = (
@@ -36,6 +37,7 @@ class Chess_Board:
             if i == 7:
                 self.instancias_tablero(i, "Negro")
 
+
             for j in range(len(self.tablero_matriz[i])):
 
                 if i == 1:
@@ -44,8 +46,6 @@ class Chess_Board:
                 elif i == 6:
                     self.tablero_matriz[i][j] = Piezas("Peon", "Negro", "./Resources/Images/Pieces/Negro/Peon Negro.png")
 
-        """ for fila in self.tablero_matriz:
-            print(fila) """
 
     def dibujar_tablero(self, screen, x, y):
         tam_cuadrado = 63
@@ -57,4 +57,5 @@ class Chess_Board:
                 if isinstance(pieza, Piezas):
                     pos = (x + j * tam_cuadrado, y + i * tam_cuadrado)
                     screen.blit(pygame.image.load(pieza.obtener_imagen()), pos)
+
 

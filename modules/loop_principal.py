@@ -2,7 +2,6 @@ from modules.chess_board import Chess_Board
 import sys, pygame;
 
 
-
 class game_loop_principal:
 
     #* Constructor de la clase
@@ -10,24 +9,28 @@ class game_loop_principal:
         self.user_interface = user_interface
         self.chess_board = Chess_Board();
 
+
     #* Funciones o métodos de la clase
     def start_game(self):
+
         #* Variables
         screen = pygame.display.set_mode((1024, 640))
         fps = pygame.time.Clock()
         background = self.user_interface.load_background()
+
         start_game = False;
+
         efecto = 0;
         aumento = True;
+
         animation = True;
-        transition = True;
+        transition = True;      
         
         #*Effects:
-        #?Soundtrack
         pygame.mixer.init();
         pygame.mixer.music.load("./Resources/Soundtrack/undertale_soundrack.wav")
-        
         pygame.mixer_music.play(-1);
+
 
         
         
@@ -37,12 +40,16 @@ class game_loop_principal:
                 if evento.type == pygame.QUIT:
                     sys.exit();
                 elif evento.type == pygame.KEYDOWN:
-                    
                     start_game = True;
+
 
             #* Flujo Principal
             #?Animaciones de Carga y Dibujado de Tablero
             if start_game:
+                
+                
+                
+                
                 
                 if animation: 
                     efecto += 5
@@ -55,7 +62,9 @@ class game_loop_principal:
                     efecto -= 10
                     if efecto <= 0:
                         efecto = 0
-                      
+                
+                
+                 
                 if(transition):  
                     screen.blit(background, (0, 0));
                     self.user_interface.animation_init(efecto, screen)
@@ -73,28 +82,18 @@ class game_loop_principal:
                 
                 
                 
-                
-                
-                
-                
-                
+               
 
             else:
                 screen.blit(background, (0, 0))
-                print("else")
 
-                if aumento:
-                    efecto = self.user_interface.aumento(efecto)
-                    if efecto >= 255:
-                        efecto = 255
-                        aumento = False
-                else:
-                    efecto -= 12
-                    if efecto <= 0:
-                        efecto = 0
-                        aumento = True
+                if(efecto >= 255): aumento = False;
+                if(efecto <= 0): aumento = True; 
+                if(aumento): efecto += 5;
+                if(aumento == False): efecto -= 5;
 
-                print(efecto)
+
+
                 self.user_interface.text(screen, "P U L S A   P A R A   I N I C I A R", (efecto, 0, 0), 70, (80, 500))  
 
 

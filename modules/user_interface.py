@@ -16,12 +16,7 @@ class User_Interface_UI:
 
         return screen.blit(text, coordenadas)
 
-    def aumento(self, numero):
-        return numero + 10;
-    
-    def reseteo_numero(self):
-        return 0;
-        
+   
     
     def animation_init(self, radio, screen):
          pygame.draw.circle(screen, (0,0,0), (512,320),radio);
