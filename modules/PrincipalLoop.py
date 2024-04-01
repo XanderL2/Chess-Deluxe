@@ -1,4 +1,4 @@
-from modules.chess_board import ChessBoard
+from modules.chessBoard import ChessBoard
 import sys, pygame;
 
 
@@ -13,7 +13,7 @@ class GameloopPrincipal:
     
     
     #* Principal Method
-    def Start_game(self):
+    def StartGame(self):
 
         #* Variables
         screen = pygame.display.set_mode((1024, 640))

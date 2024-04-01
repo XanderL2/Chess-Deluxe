@@ -4,7 +4,7 @@ import pygame;
 
 class ChessBoard:
 
-    # Constructor de la clase:
+    # Constructor:
     def __init__(self):
         self.board = (
             ["", "", "", "", "", "", "", ""],
@@ -47,7 +47,7 @@ class ChessBoard:
                     self.board[i][j] =  Pieces("Peon", "Negro", "./Resources/Images/Pieces/Negro/Peon Negro.png")
 
 
-    def drawBoard(self, screen, x, y):
+    def DrawBoard(self, screen, x, y):
         squareSize= 63
 
         for i in range(len(self.board)):

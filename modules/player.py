@@ -1,5 +1,5 @@
 class player:
-    def __init__(self, piezas_activas, score):
-        self.piezas_activas = piezas_activas;
+    def __init__(self, activePieces, score):
+        self.piezas_activas = activePieces;
         self.score = score;
    

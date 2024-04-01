@@ -1,4 +1,4 @@
-from modules.chess_board import ChessBoard
+from modules.chessBoard import ChessBoard
 import pygame; 
 
 
@@ -41,7 +41,7 @@ class UserInterfaceUI:
 
             screen.blit(background, (0, 0));
             self.chessBoard.InitialPosition()
-            self.chessBoard.drawBoard(screen, 83, 33 )
+            self.chessBoard.DrawBoard(screen, 83, 33 )
             radius[0] -=  8;
 
         if(radius[0] <= 0): radius[0] = 0; 
