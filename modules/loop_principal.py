@@ -2,23 +2,23 @@ from modules.chess_board import ChessBoard
 import sys, pygame;
 
 
-class game_loop_principal:
+class GameloopPrincipal:
 
     #* Constructor
-    def __init__(self, user_interface):
-        self.user_interface = user_interface
+    def __init__(self, userInterface):
+        self.userInterface = userInterface 
         self.chess_board = ChessBoard();
 
     
     
     
     #* Principal Method
-    def start_game(self):
+    def Start_game(self):
 
         #* Variables
         screen = pygame.display.set_mode((1024, 640))
         fps = pygame.time.Clock()
-        background = self.user_interface.Load_background()
+        background = self.userInterface.LoadBackground()
 
         start_game = False;
         efecto = [0];
@@ -42,7 +42,7 @@ class game_loop_principal:
                     
                     start_game = True;
                     if(pulsacion): 
-                        self.user_interface.ResetValues(efecto, aumento);                     
+                        self.userInterface.ResetValues(efecto, aumento);                     
                         pulsacion = False;
 
 
@@ -51,8 +51,8 @@ class game_loop_principal:
             if start_game:
                 
 
-                self.user_interface.OldAnimation(efecto, aumento, screen, "./Resources/Images/FONDO.png")
-                self.user_interface.AnimationCircle(efecto[0], screen)
+                self.userInterface.OldAnimation(efecto, aumento, screen, "./Resources/Images/FONDO.png")
+                self.userInterface.AnimationCircle(efecto[0], screen)
                
 
                 
@@ -65,11 +65,9 @@ class game_loop_principal:
             else:
                 #Cover
                 screen.blit(background, (0, 0))
-                self.user_interface.FlashingAnimation(255, 0, efecto, aumento);
-                self.user_interface.Text(screen, "P U L S A   P A R A   I N I C I A R", (efecto[0], 0, 0), 70, (80, 500))  
+                self.userInterface.FlashingAnimation(255, 0, efecto, aumento);
+                self.userInterface.Text(screen, "P U L S A   P A R A   I N I C I A R", (efecto[0], 0, 0), 70, (80, 500))  
 
 
             pygame.display.flip()
             fps.tick(60)
-
-

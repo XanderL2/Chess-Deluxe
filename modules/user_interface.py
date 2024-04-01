@@ -12,7 +12,7 @@ class UserInterfaceUI:
         self.chessBoard = ChessBoard();
 
     # Méthods
-    def Load_background(self):
+    def LoadBackground(self):
         return pygame.image.load(self.background).convert()
 
     def Text(self,screen, text, color, size, coordinates):
@@ -40,8 +40,8 @@ class UserInterfaceUI:
         if(fadeIn[0] == False): 
 
             screen.blit(background, (0, 0));
-            self.chessBoard.posiciones_iniciales()
-            self.chessBoard.dibujar_tablero(screen, 83, 33 )
+            self.chessBoard.InitialPosition()
+            self.chessBoard.drawBoard(screen, 83, 33 )
             radius[0] -=  8;
 
         if(radius[0] <= 0): radius[0] = 0; 

@@ -1,30 +1,28 @@
-import pygame;
+class Pieces:
+    def __init__(self, type , color, imagePiece):
+        self.type = type  
+        self.pieceColor = color
+        self.imagePiece = imagePiece
+        self.currentRow = None
+        self.currentColumn = None
 
-class Piezas:
-    def __init__(self, tipo_pieza, color, image_piece):
-        self.tipo_pieza = tipo_pieza
-        self.color_pieza = color
-        self.image_piece = image_piece
-        self.fila_actual = None
-        self.columna_actual = None
+    def GetColor(self):
+        return self.pieceColor;
 
-    def obtener_color(self):
-        return self.color_pieza
+    def GetType(self):
+        return self.type;
 
-    def obtener_tipo(self):
-        return self.tipo_pieza
+    def GetImage(self):
+        return self.imagePiece;
 
-    def obtener_imagen(self):
-        return self.image_piece
+    def GetCurrentPosition(self):
+        return self.currentRow, self.currentColumn;
 
-    def obtener_posicion_actual(self):
-        return self.fila_actual, self.columna_actual
+    def SetPosition(self, row, column):
+        self.currentRow = row; 
+        self.currentColumn = column;
 
-    def establecer_posicion_actual(self, fila, columna):
-        self.fila_actual = fila
-        self.columna_actual = columna
-
-    def movimientos_posibles(self):
+    def PossibleMovements(self):
         pass
 
     def movimiento_valido(self, destino):
@@ -33,5 +31,5 @@ class Piezas:
     def realizar_movimiento(self, destino):
         pass
 
-    def info_pieza(self):
-        print(f"Color: {self.color_pieza}, Tipo: {self.tipo_pieza}")
+    def PieceInformation(self):
+        print(f"Color: {self.pieceColor}, Tipo: {self.type}")

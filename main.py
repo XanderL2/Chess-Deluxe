@@ -2,19 +2,17 @@
 import os, pygame;
 
 from modules.user_interface import UserInterfaceUI;
-from modules.loop_principal import game_loop_principal;
+from modules.loop_principal import GameloopPrincipal;
 
 
 os.system("clear"); 
 
 
-
 #?Inicalizacion del Juego   
-
 pygame.init();
 pygame.mixer.init();
 
 
-user_interface_instance = UserInterfaceUI("./Resources/Images/BACKGROUND_CHESS.jpg")
-ajedrez = game_loop_principal(user_interface_instance)
-ajedrez.start_game()
+userInterfaceInstance= UserInterfaceUI("./Resources/Images/BACKGROUND_CHESS.jpg")
+ajedrez = GameloopPrincipal(userInterfaceInstance)
+ajedrez.Start_game()
