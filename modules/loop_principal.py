@@ -22,8 +22,7 @@ class game_loop_principal:
         start_game = False;
         efecto = [0];
         aumento = [True];
-
-        transition = True;      
+        pulsacion = True;      
         
         #*Effects:
         pygame.mixer.init();
@@ -39,31 +38,25 @@ class game_loop_principal:
                 if evento.type == pygame.QUIT:
                     sys.exit();
                 elif evento.type == pygame.KEYDOWN:
-                    start_game = True;
-                    self.user_interface.ResetValues(efecto, aumento)                    
                     
+                    start_game = True;
+                    if(pulsacion): 
+                        self.user_interface.ResetValues(efecto, aumento);                     
+                        pulsacion = False;
 
 
             #* Flujo Principal
             #?Animaciones de Carga y Dibujado de Tablero
+
             if start_game:
                 
-                
-                
-                self.user_interface.OldAnimation(efecto, aumento)
+
+                self.user_interface.OldAnimation(efecto, aumento, screen, "./Resources/Images/FONDO.png")
                 self.user_interface.AnimationCircle(efecto[0], screen)
-        
-
-                if(efecto[0] == 0):
-                    background = pygame.image.load("./Resources/Images/FONDO.png").convert()
-                    screen.blit(background, (0, 0));
-
-                print(efecto[0])
-                                   
-
-
                
-               
+
+
+              
                
                
                
@@ -94,6 +87,7 @@ class game_loop_principal:
                 # else:
                 #     self.chess_board.posiciones_iniciales()
                 #     self.chess_board.dibujar_tablero(screen, 83, 33 )
+
                 
                 #?Logica de Movimiento y Gameplay
                 
@@ -108,7 +102,7 @@ class game_loop_principal:
                 self.user_interface.Text(screen, "P U L S A   P A R A   I N I C I A R", (efecto[0], 0, 0), 70, (80, 500))  
 
 
-            fps.tick(60)
             pygame.display.flip()
+            fps.tick(60)
 
 

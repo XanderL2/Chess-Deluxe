@@ -1,4 +1,6 @@
+from modules.chess_board import Chess_Board
 import pygame; 
+
 
 #Animations and loading cover.
 
@@ -28,17 +30,15 @@ class User_Interface_UI:
         efecto[0] = 0; 
         aumento[0] = True;
 
-    def OldAnimation(self, efecto, aumento):
-        if(aumento[0]): efecto[0]+= 5;
-        if(efecto[0] == 600): aumento[0] = False;
-        if(aumento[0] == False): efecto[0] -= 5;
-        if(efecto[0] <= 0):
-            efecto[0] = 0; 
+    def OldAnimation(self, efecto, aumento, screen, background):
 
+        background = pygame.image.load(background).convert()
+        if(aumento[0]): efecto[0] += 8;
+        if(efecto[0] >= 650): aumento[0] = False;
+        if(aumento[0] == False): 
+            screen.blit(background, (0, 0));
+            efecto[0] -=  8;
+        if(efecto[0] <= 0): efecto[0] = 0; 
 
-        
-  
-    
     def AnimationCircle(self, radio, screen):
-         pygame.draw.circle(screen, (0,0,0), (512,320),radio);
-  
+        pygame.draw.circle(screen, (0, 0, 0), (512, 320), radio)

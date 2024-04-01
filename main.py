@@ -18,5 +18,3 @@ pygame.mixer.init();
 user_interface_instance = User_Interface_UI("./Resources/Images/BACKGROUND_CHESS.jpg")
 ajedrez = game_loop_principal(user_interface_instance)
 ajedrez.start_game()
-
-
