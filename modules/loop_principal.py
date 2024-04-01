@@ -1,4 +1,4 @@
-from modules.chess_board import Chess_Board
+from modules.chess_board import ChessBoard
 import sys, pygame;
 
 
@@ -7,8 +7,9 @@ class game_loop_principal:
     #* Constructor
     def __init__(self, user_interface):
         self.user_interface = user_interface
-        self.chess_board = Chess_Board();
+        self.chess_board = ChessBoard();
 
+    
     
     
     #* Principal Method
@@ -45,8 +46,7 @@ class game_loop_principal:
                         pulsacion = False;
 
 
-            #* Flujo Principal
-            #?Animaciones de Carga y Dibujado de Tablero
+            #*Flujo Principal
 
             if start_game:
                 
@@ -54,39 +54,6 @@ class game_loop_principal:
                 self.user_interface.OldAnimation(efecto, aumento, screen, "./Resources/Images/FONDO.png")
                 self.user_interface.AnimationCircle(efecto[0], screen)
                
-
-
-              
-               
-               
-               
-               
-                
-                
-                # if animation: 
-                #     efecto += 5
-                    
-                #     if efecto >= 600:
-                #         animation = False
-                #         background = pygame.image.load("./Resources/Images/FONDO.png").convert()
-                #         screen.blit(background, (0, 0));
-                # else:
-                #     efecto -= 10
-                #     if efecto <= 0:
-                #         efecto = 0
-                
-                
-                 
-                # if(transition):  
-                #     screen.blit(background, (0, 0));
-                #     self.user_interface.animation_init(efecto, screen)
-                    
-                #     if(efecto == 0):
-                #         transition = False;
-                        
-                # else:
-                #     self.chess_board.posiciones_iniciales()
-                #     self.chess_board.dibujar_tablero(screen, 83, 33 )
 
                 
                 #?Logica de Movimiento y Gameplay

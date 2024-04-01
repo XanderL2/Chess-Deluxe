@@ -2,7 +2,7 @@ from modules.piezas import Piezas
 import pygame;
 
 
-class Chess_Board:
+class ChessBoard:
 
     # Constructor de la clase:
     def __init__(self):

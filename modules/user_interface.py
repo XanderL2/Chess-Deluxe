@@ -1,44 +1,50 @@
-from modules.chess_board import Chess_Board
+from modules.chess_board import ChessBoard
 import pygame; 
 
 
 #Animations and loading cover.
 
-class User_Interface_UI:
+class UserInterfaceUI:
 
     # Constructor
     def __init__(self, background):
         self.background = background
+        self.chessBoard = ChessBoard();
 
     # Méthods
     def Load_background(self):
         return pygame.image.load(self.background).convert()
 
-    def Text(self,screen, palabras, color, size, coordenadas):
+    def Text(self,screen, text, color, size, coordinates):
 
         font_text = pygame.font.Font("./Resources/Fonts/Fresco Stamp.ttf", size)
-        text = font_text.render(palabras, True, color)
+        text = font_text.render(text, True, color)
 
-        return screen.blit(text, coordenadas)
+        return screen.blit(text, coordinates)
 
-    def FlashingAnimation (self, max, min, efecto, aumento):
-        if efecto[0] >= max: aumento[0] = False
-        if efecto[0] <= min: aumento[0] = True
-        efecto[0] += 5 if aumento[0] else -5
+    def FlashingAnimation (self, max, min, radius, fadeIn):
+        if radius[0] >= max: fadeIn[0] = False
+        if radius[0] <= min: fadeIn[0] = True
+        radius[0] += 5 if fadeIn[0] else -5
 
-    def ResetValues(self, efecto, aumento):
-        efecto[0] = 0; 
-        aumento[0] = True;
+    def ResetValues(self, radius, fadeIn):
+        radius[0] = 0; 
+        fadeIn[0] = True;
 
-    def OldAnimation(self, efecto, aumento, screen, background):
+    def OldAnimation(self, radius, fadeIn, screen, background):
 
         background = pygame.image.load(background).convert()
-        if(aumento[0]): efecto[0] += 8;
-        if(efecto[0] >= 650): aumento[0] = False;
-        if(aumento[0] == False): 
-            screen.blit(background, (0, 0));
-            efecto[0] -=  8;
-        if(efecto[0] <= 0): efecto[0] = 0; 
 
-    def AnimationCircle(self, radio, screen):
-        pygame.draw.circle(screen, (0, 0, 0), (512, 320), radio)
+        if(fadeIn[0]): radius[0] += 8;
+        if(radius[0] >= 650): fadeIn[0] = False;
+        if(fadeIn[0] == False): 
+
+            screen.blit(background, (0, 0));
+            self.chessBoard.posiciones_iniciales()
+            self.chessBoard.dibujar_tablero(screen, 83, 33 )
+            radius[0] -=  8;
+
+        if(radius[0] <= 0): radius[0] = 0; 
+
+    def AnimationCircle(self, radius, screen):
+        pygame.draw.circle(screen, (0, 0, 0), (512, 320), radius)
